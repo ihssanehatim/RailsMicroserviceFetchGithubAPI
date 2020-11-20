@@ -1,0 +1,7 @@
+{
+  "name": "Rails REST Microservice",
+  "description": "REST microservice that list the languages used by the 100 trending public repos on GitHub. For every language you can see attributes : number of repos using it and the list of its repos ",
+  "repository": "https://github.com/ihssanehatim/RailsMicroserviceFetchGithubAPI",
+  "logo": "https://avatars1.githubusercontent.com/u/52088496?s=460&u=46ed75047f24ca056195472c143bac2d58695c93&v=4",
+  "keywords": ["rails", "rails-api", "microservice" , "rest" , "github-api"]
+}
