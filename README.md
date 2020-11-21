@@ -12,20 +12,36 @@ For every language we need the following information (attributes) :wink: :
 _***How to use :star2: ?***_
 ---------------
 
-using the REST standards here is how you can use this API :
+using the REST standards , here is how you can use this API :
 
+```
+GET /api/v1/languages
+```
 
 **Result will be :**
 
-      {
-         "language" : "Ruby",
-         "number_of_repos" : 40,
-         "list_of_repos" : {
-                              "URL1",
-                              "URL2",
-                               ...
-                             }
-       }
+       [
+           {
+               "language": "JavaScript",
+               "number_of_repos": 15,
+               "list_of_repos": [
+                   "URL1",
+                   "URL2",
+                    ...
+               ]
+           },
+           {
+               "language": "Ruby",
+               "number_of_repos": 5,
+               "list_of_repos": [
+                    "URL1",
+                    "URL2",
+                    ...
+               ]
+           },
+           ...
+       ]
+
 Status : 
 
 [200] => SUCCESS
@@ -46,7 +62,33 @@ Specifications
 
     **Excon** : to fetch the GITHUB API , Excon is a general HTTP(s) client and is particularly well suited to usage in API clients.  
 
-* How to run the test suite
+* folder structure
+```
+app
+└── controllers
+    └── api
+        └── v1
+            ├── languages_controller.rb :
+                In this controller there are two methods : index which calls 
+                a private back_to_client method rendering both :
+                adapted_data and status .
+└── models
+    └── api
+        └── v1
+            ├── helperHTTP.rb :
+                In this class I am providing some methods related to fetching data from github
+                using Excon .
+
+            ├── language.rb :
+                As we know that each language has 2 attributes to show as a final result,
+                this model allows to define methods controlling the state of each language .
+
+            ├── languageAdapter.rb :
+                In this model I format and adapt the data resulting from Github API
+                using first : a hash which contains as a key : the language , as a value :
+                the instance of Language model .
+
+```
 
 * Deployment instructions
 
